@@ -21,11 +21,15 @@ extension JobDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let data = listing.details.data(using: .utf8), let text = try? NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil) {
+        if let data = listing.details.data(using: .utf16), let text = try? NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil) {
             textView.attributedText = text
         } else {
             textView.attributedText = NSAttributedString(string: listing.details)
         }
+    }
+
+    override func viewDidLayoutSubviews() {
+        textView.setContentOffset(.zero, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

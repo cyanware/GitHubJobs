@@ -19,8 +19,10 @@ class JobListingViewController: UITableViewController {
     }
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var footerLabel: UILabel!
     
-    fileprivate var jobListings = [JobListing]()
+    let jobListingsPerPage = 50
+    var jobListings = [JobListing]()
 }
 
 
@@ -35,7 +37,10 @@ extension JobListingViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         navigationItem.title = "GitHub Jobs"
+        searchBar.autocapitalizationType = .none
         searchBar.delegate = self
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(nextPage))
+        footerLabel.addGestureRecognizer(tapRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +48,44 @@ extension JobListingViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+extension JobListingViewController {
+
+    func search(for keywords: String?) {
+        let endpoint = "https://jobs.github.com/positions.json"
+        var parameters = [String: String]()
+        parameters["description"] = keywords
+        parameters["page"] = String(jobListings.count / jobListingsPerPage)
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        Alamofire.request(endpoint, method: .get, parameters: parameters).responseJSON().then { json -> Void in
+            let listings = JSON(json)
+            for job in listings.arrayValue {
+                let listing = JobListing(company: job["company"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: job["description"].stringValue)
+                self.jobListings.append(listing)
+            }
+        }.always {
+            self.searchBar.resignFirstResponder()
+            let count = self.jobListings.count
+            let footerText = count > 1 ? "\(count) job listings" : "\(count) job listing"
+            if count > 0 && count % self.jobListingsPerPage == 0 {
+                self.footerLabel.text = footerText + ". Next page..."
+            } else {
+                self.footerLabel.text = footerText
+            }
+            self.tableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }.catch { error in
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+
+    func nextPage() {
+        if jobListings.count != 0 && jobListings.count % jobListingsPerPage == 0 {
+            search(for: searchBar.text)
+        }
+    }
 }
 
 // MARK: - UITableDataSource
@@ -122,28 +165,23 @@ extension JobListingViewController {
 
 extension JobListingViewController: UISearchBarDelegate {
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         jobListings.removeAll()
-
-        let endpoint = "https://jobs.github.com/positions.json"
-        var parameters = [String: String]()
-        parameters["description"] = searchBar.text
-
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        Alamofire.request(endpoint, method: .get, parameters: parameters).responseJSON().then { json -> Void in
-            let listings = JSON(json)
-            for job in listings.arrayValue {
-                let listing = JobListing(company: job["company"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: job["description"].stringValue)
-                self.jobListings.append(listing)
-            }
-        }.always {
-            searchBar.resignFirstResponder()
-            self.jobListings.sort { $0.company < $1.company }
-            self.tableView.reloadData()
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }.catch { error in
-            print("Error: \(error.localizedDescription)")
-        }
+        tableView.reloadData()
+        footerLabel.text = "Searching..."
+        search(for: searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
