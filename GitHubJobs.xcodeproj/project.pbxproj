@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F89885C1F51DD9900E0BBA9 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89885B1F51DD9900E0BBA9 /* JobListing.swift */; };
+		1F89885D1F51DD9900E0BBA9 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89885B1F51DD9900E0BBA9 /* JobListing.swift */; };
+		1F89885E1F51DD9900E0BBA9 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89885B1F51DD9900E0BBA9 /* JobListing.swift */; };
+		1F89886E1F51EF8400E0BBA9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89886D1F51EF8400E0BBA9 /* Location.swift */; };
+		1F89886F1F51EF8400E0BBA9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89886D1F51EF8400E0BBA9 /* Location.swift */; };
+		1F8988701F51EF8400E0BBA9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89886D1F51EF8400E0BBA9 /* Location.swift */; };
+		1F8988761F51F01D00E0BBA9 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8988751F51F01D00E0BBA9 /* JobDetailViewController.swift */; };
+		1F8988771F51F01D00E0BBA9 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8988751F51F01D00E0BBA9 /* JobDetailViewController.swift */; };
+		1F8988781F51F01D00E0BBA9 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8988751F51F01D00E0BBA9 /* JobDetailViewController.swift */; };
+		1F89887A1F51F12E00E0BBA9 /* JobListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8988791F51F12E00E0BBA9 /* JobListingViewController.swift */; };
+		1F89887B1F51F12E00E0BBA9 /* JobListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8988791F51F12E00E0BBA9 /* JobListingViewController.swift */; };
+		1F89887C1F51F12E00E0BBA9 /* JobListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8988791F51F12E00E0BBA9 /* JobListingViewController.swift */; };
 		1F8EBF4A1F51B69C0068559A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8EBF491F51B69C0068559A /* AppDelegate.swift */; };
-		1F8EBF4C1F51B69C0068559A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8EBF4B1F51B69C0068559A /* ViewController.swift */; };
 		1F8EBF4F1F51B69C0068559A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EBF4D1F51B69C0068559A /* Main.storyboard */; };
 		1F8EBF511F51B69C0068559A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EBF501F51B69C0068559A /* Assets.xcassets */; };
 		1F8EBF541F51B69C0068559A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EBF521F51B69C0068559A /* LaunchScreen.storyboard */; };
@@ -37,9 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F89885B1F51DD9900E0BBA9 /* JobListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobListing.swift; path = DataModels/JobListing.swift; sourceTree = "<group>"; };
+		1F89886D1F51EF8400E0BBA9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = DataModels/Location.swift; sourceTree = "<group>"; };
+		1F8988751F51F01D00E0BBA9 /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobDetailViewController.swift; path = ViewControllers/JobDetailViewController.swift; sourceTree = "<group>"; };
+		1F8988791F51F12E00E0BBA9 /* JobListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobListingViewController.swift; path = ViewControllers/JobListingViewController.swift; sourceTree = "<group>"; };
 		1F8EBF461F51B69C0068559A /* GitHubJobs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubJobs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8EBF491F51B69C0068559A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F8EBF4B1F51B69C0068559A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F8EBF4E1F51B69C0068559A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F8EBF501F51B69C0068559A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F8EBF531F51B69C0068559A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -89,6 +103,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F89885F1F51DDAB00E0BBA9 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F89885B1F51DD9900E0BBA9 /* JobListing.swift */,
+				1F89886D1F51EF8400E0BBA9 /* Location.swift */,
+			);
+			name = "Data Models";
+			sourceTree = "<group>";
+		};
+		1F8988641F51EB2800E0BBA9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F8988751F51F01D00E0BBA9 /* JobDetailViewController.swift */,
+				1F8988791F51F12E00E0BBA9 /* JobListingViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		1F8EBF3D1F51B69C0068559A = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +146,9 @@
 		1F8EBF481F51B69C0068559A /* GitHubJobs */ = {
 			isa = PBXGroup;
 			children = (
+				1F89885F1F51DDAB00E0BBA9 /* Data Models */,
+				1F8988641F51EB2800E0BBA9 /* View Controllers */,
 				1F8EBF491F51B69C0068559A /* AppDelegate.swift */,
-				1F8EBF4B1F51B69C0068559A /* ViewController.swift */,
 				1F8EBF4D1F51B69C0068559A /* Main.storyboard */,
 				1F8EBF501F51B69C0068559A /* Assets.xcassets */,
 				1F8EBF521F51B69C0068559A /* LaunchScreen.storyboard */,
@@ -449,8 +482,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F8EBF4C1F51B69C0068559A /* ViewController.swift in Sources */,
+				1F8988761F51F01D00E0BBA9 /* JobDetailViewController.swift in Sources */,
 				1F8EBF4A1F51B69C0068559A /* AppDelegate.swift in Sources */,
+				1F89885C1F51DD9900E0BBA9 /* JobListing.swift in Sources */,
+				1F89886E1F51EF8400E0BBA9 /* Location.swift in Sources */,
+				1F89887A1F51F12E00E0BBA9 /* JobListingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +494,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F89885D1F51DD9900E0BBA9 /* JobListing.swift in Sources */,
+				1F8988771F51F01D00E0BBA9 /* JobDetailViewController.swift in Sources */,
+				1F89886F1F51EF8400E0BBA9 /* Location.swift in Sources */,
 				1F8EBF5F1F51B69C0068559A /* GitHubJobsTests.swift in Sources */,
+				1F89887B1F51F12E00E0BBA9 /* JobListingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +506,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F89885E1F51DD9900E0BBA9 /* JobListing.swift in Sources */,
+				1F8988781F51F01D00E0BBA9 /* JobDetailViewController.swift in Sources */,
+				1F8988701F51EF8400E0BBA9 /* Location.swift in Sources */,
 				1F8EBF6A1F51B69C0068559A /* GitHubJobsUITests.swift in Sources */,
+				1F89887C1F51F12E00E0BBA9 /* JobListingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +751,7 @@
 				1F8EBF701F51B69C0068559A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F8EBF711F51B69C0068559A /* Build configuration list for PBXNativeTarget "GitHubJobsTests" */ = {
 			isa = XCConfigurationList;
@@ -715,6 +760,7 @@
 				1F8EBF731F51B69C0068559A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F8EBF741F51B69C0068559A /* Build configuration list for PBXNativeTarget "GitHubJobsUITests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +769,7 @@
 				1F8EBF761F51B69C0068559A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
