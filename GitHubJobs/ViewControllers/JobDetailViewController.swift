@@ -10,9 +10,9 @@ import UIKit
 
 class JobDetailViewController: UIViewController {
     
-    var listing: JobListing!
-
     @IBOutlet weak var textView: UITextView!
+
+    var listing: JobListing!
 
 }
 

@@ -23,6 +23,7 @@ class JobListingViewController: UITableViewController {
     
     let jobListingsPerPage = 50
     var jobListings = [JobListing]()
+    var location: Location?
 }
 
 
@@ -56,6 +57,18 @@ extension JobListingViewController {
         let endpoint = "https://jobs.github.com/positions.json"
         var parameters = [String: String]()
         parameters["description"] = keywords
+        if let location = location {
+            switch location {
+            case let .cityOrZip(cityOrZip):
+                parameters["location"] = cityOrZip.replacingOccurrences(of: " ", with: "+")
+            case let .coordinates(coordinate2D):
+                parameters["lat"] = String(coordinate2D.latitude)
+                parameters["long"] = String(coordinate2D.longitude)
+            case let .latLong(latitude, longitude):
+                parameters["lat"] = String(latitude)
+                parameters["long"] = String(longitude)
+            }
+        }
         parameters["page"] = String(jobListings.count / jobListingsPerPage)
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -66,7 +79,6 @@ extension JobListingViewController {
                 self.jobListings.append(listing)
             }
         }.always {
-            self.searchBar.resignFirstResponder()
             let count = self.jobListings.count
             let footerText = count > 1 ? "\(count) job listings" : "\(count) job listing"
             if count > 0 && count % self.jobListingsPerPage == 0 {
@@ -157,6 +169,10 @@ extension JobListingViewController {
             let listing = jobListings[indexPath.row]
             viewController.listing = listing
         }
+        if let viewController = segue.destination as? FilterViewController {
+            viewController.location = location
+            viewController.delegate = self
+        }
     }
 
 }
@@ -178,6 +194,7 @@ extension JobListingViewController: UISearchBarDelegate {
         tableView.reloadData()
         footerLabel.text = "Searching..."
         search(for: searchBar.text)
+        searchBar.resignFirstResponder()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

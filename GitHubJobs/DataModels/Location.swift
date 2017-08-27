@@ -23,7 +23,7 @@ extension Location: CustomStringConvertible {
     var description: String {
         switch self {
         case let .cityOrZip(location):
-            return "location=\(location)"
+            return location
         case let .coordinates(coordinate2D):
             return "lat=\(coordinate2D.latitude)&long=\(coordinate2D.longitude)"
         case let .latLong(latitude, longitude):
