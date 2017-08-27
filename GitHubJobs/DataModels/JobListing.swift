@@ -10,7 +10,9 @@ import Foundation
 
 struct JobListing {
 
+    let id: String
     let company: String
+    let companyLogo: String
     let title: String
     let location: String
     let details: String

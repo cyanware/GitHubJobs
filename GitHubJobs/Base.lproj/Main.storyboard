@@ -116,7 +116,7 @@ Location</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gFN-EC-I7h">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="BSp-gY-MQP">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="BSp-gY-MQP">
                             <connections>
                                 <segue destination="p05-Ic-O4h" kind="show" id="pnq-UX-w1v"/>
                             </connections>

@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import CoreGraphics
 import Alamofire
+import AlamofireImage
 import PromiseKit
 import SwiftyJSON
 
@@ -15,6 +17,12 @@ import SwiftyJSON
 class JobListingViewController: UITableViewController {
     
     required init?(coder decoder: NSCoder) {
+        // Create a blank placeholder image for table cells
+        let size = CGSize(width: 66, height: 66)
+        UIGraphicsBeginImageContext(size)
+        defaultImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext();
+
         super.init(coder: decoder)
     }
     
@@ -22,6 +30,7 @@ class JobListingViewController: UITableViewController {
     @IBOutlet weak var footerLabel: UILabel!
     
     let jobListingsPerPage = 50
+    let defaultImage: UIImage
     var jobListings = [JobListing]()
     var location: Location?
 }
@@ -75,7 +84,7 @@ extension JobListingViewController {
         Alamofire.request(endpoint, method: .get, parameters: parameters).responseJSON().then { json -> Void in
             let listings = JSON(json)
             for job in listings.arrayValue {
-                let listing = JobListing(company: job["company"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: job["description"].stringValue)
+                let listing = JobListing(id: job["id"].stringValue, company: job["company"].stringValue, companyLogo: job["company_logo"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: job["description"].stringValue)
                 self.jobListings.append(listing)
             }
         }.always {
@@ -115,8 +124,14 @@ extension JobListingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobListingCell", for: indexPath)
 
-        cell.textLabel?.text = jobListings[indexPath.row].company
-        cell.detailTextLabel?.text = "\(jobListings[indexPath.row].title)\n\(jobListings[indexPath.row].location)"
+        cell.imageView?.image = defaultImage
+        let listing = jobListings[indexPath.row]
+        if let url = URL(string: listing.companyLogo) {
+            let resizer = AspectScaledToFitSizeFilter(size: defaultImage.size)
+            cell.imageView?.af_setImage(withURL: url, filter: resizer)
+        }
+        cell.textLabel?.text = listing.company
+        cell.detailTextLabel?.text = "\(listing.title)\n\(listing.location)"
 
         return cell
     }
