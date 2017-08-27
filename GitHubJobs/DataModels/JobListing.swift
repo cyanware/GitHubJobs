@@ -16,6 +16,7 @@ struct JobListing {
     let title: String
     let location: String
     let details: String
+    let apply: String
 
 }
 

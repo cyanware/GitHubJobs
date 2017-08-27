@@ -84,7 +84,7 @@ extension JobListingViewController {
         Alamofire.request(endpoint, method: .get, parameters: parameters).responseJSON().then { json -> Void in
             let listings = JSON(json)
             for job in listings.arrayValue {
-                let listing = JobListing(id: job["id"].stringValue, company: job["company"].stringValue, companyLogo: job["company_logo"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: job["description"].stringValue)
+                let listing = JobListing(id: job["id"].stringValue, company: job["company"].stringValue, companyLogo: job["company_logo"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: job["description"].stringValue, apply: job["how_to_apply"].stringValue)
                 self.jobListings.append(listing)
             }
         }.always {

@@ -11,6 +11,7 @@ import UIKit
 class JobDetailViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textLabel: UILabel!
 
     var listing: JobListing!
 
@@ -25,6 +26,11 @@ extension JobDetailViewController {
             textView.attributedText = text
         } else {
             textView.attributedText = NSAttributedString(string: listing.details)
+        }
+        if let data = listing.apply.data(using: .utf16), let text = try? NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil) {
+            textLabel.attributedText = text
+        } else {
+            textLabel.attributedText = NSAttributedString(string: listing.apply)
         }
     }
 
