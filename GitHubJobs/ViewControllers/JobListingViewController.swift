@@ -65,7 +65,7 @@ extension JobListingViewController {
     func search(for keywords: String?) {
         let endpoint = "https://jobs.github.com/positions.json"
         var parameters = [String: String]()
-        parameters["description"] = keywords
+        parameters["description"] = keywords?.replacingOccurrences(of: " ", with: "+")
         if let location = location {
             switch location {
             case let .cityOrZip(cityOrZip):

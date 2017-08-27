@@ -10,8 +10,8 @@ import UIKit
 
 class JobDetailViewController: UIViewController {
     
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var decriptionTextView: UITextView!
+    @IBOutlet weak var applyTextView: UITextView!
 
     var listing: JobListing!
 
@@ -23,19 +23,19 @@ extension JobDetailViewController {
         super.viewDidLoad()
 
         if let data = listing.details.data(using: .utf16), let text = try? NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil) {
-            textView.attributedText = text
+            decriptionTextView.attributedText = text
         } else {
-            textView.attributedText = NSAttributedString(string: listing.details)
+            decriptionTextView.attributedText = NSAttributedString(string: listing.details)
         }
         if let data = listing.apply.data(using: .utf16), let text = try? NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil) {
-            textLabel.attributedText = text
+            applyTextView.attributedText = text
         } else {
-            textLabel.attributedText = NSAttributedString(string: listing.apply)
+            applyTextView.attributedText = NSAttributedString(string: listing.apply)
         }
     }
 
     override func viewDidLayoutSubviews() {
-        textView.setContentOffset(.zero, animated: false)
+        decriptionTextView.setContentOffset(.zero, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

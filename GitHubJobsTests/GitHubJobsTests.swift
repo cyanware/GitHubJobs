@@ -33,7 +33,7 @@ class GitHubJobsTests: XCTestCase {
             XCTAssert(jobListings.array != nil && jobListings.arrayValue.count > 0, "Job listing array is empty")
             print("Found \(jobListings.arrayValue.count) listings")
             for job in jobListings.arrayValue {
-                let listing = JobListing(id: job["id"].stringValue, company: job["company"].stringValue, companyLogo: job["company_logo"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: "")
+                let listing = JobListing(id: job["id"].stringValue, company: job["company"].stringValue, companyLogo: job["company_logo"].stringValue, title: job["title"].stringValue, location: job["location"].stringValue, details: "", apply: "")
                 print("\(listing)")
             }
         }.always {
@@ -49,7 +49,7 @@ class GitHubJobsTests: XCTestCase {
     }
     
     func testJobListing() {
-        let listing = JobListing(id: "", company: "Primatech", companyLogo: "", title: "Janitor", location: "Odessa, TX", details: "")
+        let listing = JobListing(id: "", company: "Primatech", companyLogo: "", title: "Janitor", location: "Odessa, TX", details: "", apply: <#String#>)
         print("\(listing)")
         XCTAssert(listing.company == "Primatech" && listing.title == "Janitor" && listing.location == "Odessa, TX" && listing.details == "")
     }
