@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.5.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - PromiseKit (4.3.2):
     - PromiseKit/Foundation (= 4.3.2)
     - PromiseKit/QuartzCore (= 4.3.2)
@@ -18,15 +20,17 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5.0)
+  - AlamofireImage (~> 3.2.0)
   - PromiseKit (~> 4.3.2)
   - PromiseKit/Alamofire (~> 4.3.2)
   - SwiftyJSON (~> 3.1.4)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   PromiseKit: 32430ae679605b17c15d6193679cae7bf60147f7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: cb2a7eae19050901624a1255f40187df591700b2
+PODFILE CHECKSUM: 8c37044282c185a3d46968adf3eca38071007cf9
 
 COCOAPODS: 1.2.0
