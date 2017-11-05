@@ -276,7 +276,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Cheong Yu";
+				ORGANIZATIONNAME = "CYANWare Software Solutions";
 				TargetAttributes = {
 					1F8EBF451F51B69C0068559A = {
 						CreatedOnToolsVersion = 8.3.3;

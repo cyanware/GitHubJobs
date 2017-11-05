@@ -3,7 +3,7 @@
 //  GitHubJobsUITests
 //
 //  Created by Cheong Yu on 8/26/17.
-//  Copyright © 2017 Cheong Yu. All rights reserved.
+//  Copyright © 2017 CYANware Software Solutions. All rights reserved.
 //
 
 import XCTest
