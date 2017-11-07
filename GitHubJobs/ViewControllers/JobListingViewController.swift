@@ -26,11 +26,11 @@ class JobListingViewController: UITableViewController {
         super.init(coder: decoder)
     }
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var footerLabel: UILabel!
     
     let jobListingsPerPage = 50
     let defaultImage: UIImage
+    var searchController: UISearchController!
     var jobListings = [JobListing]()
     var location: Location?
 }
@@ -46,9 +46,11 @@ extension JobListingViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
         navigationItem.title = "GitHub Jobs"
-        searchBar.autocapitalizationType = .none
-        searchBar.delegate = self
+
+        configureSearchController()
+        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(nextPage))
         footerLabel.addGestureRecognizer(tapRecognizer)
     }
@@ -61,6 +63,17 @@ extension JobListingViewController {
 }
 
 extension JobListingViewController {
+    
+    func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search by keywords, e.g. python"
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        tableView.tableHeaderView = searchController.searchBar
+    }
 
     func search(for keywords: String?) {
         let endpoint = "https://jobs.github.com/positions.json"
@@ -97,6 +110,7 @@ extension JobListingViewController {
             }
             self.tableView.reloadData()
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.searchController.dismiss(animated: true, completion: nil)
         }.catch { error in
             print("Error: \(error.localizedDescription)")
         }
@@ -104,7 +118,7 @@ extension JobListingViewController {
 
     func nextPage() {
         if jobListings.count != 0 && jobListings.count % jobListingsPerPage == 0 {
-            search(for: searchBar.text)
+            search(for: searchController.searchBar.text)
         }
     }
 }
@@ -217,6 +231,16 @@ extension JobListingViewController: UISearchBarDelegate {
     }
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension JobListingViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
         
     }
 
