@@ -10,6 +10,7 @@ import UIKit
 import CoreGraphics
 import Alamofire
 import AlamofireImage
+import MBProgressHUD
 import PromiseKit
 import SwiftyJSON
 
@@ -93,6 +94,9 @@ extension JobListingViewController {
         }
         parameters["page"] = String(jobListings.count / jobListingsPerPage)
         
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.mode = .indeterminate
+        hud.label.text = "Searching..."
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(endpoint, method: .get, parameters: parameters).responseJSON().then { json -> Void in
             let listings = JSON(json)
@@ -110,6 +114,7 @@ extension JobListingViewController {
             }
             self.tableView.reloadData()
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            hud.hide(animated: true)
             self.searchController.dismiss(animated: true, completion: nil)
         }.catch { error in
             print("Error: \(error.localizedDescription)")
@@ -221,7 +226,7 @@ extension JobListingViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         jobListings.removeAll()
         tableView.reloadData()
-        footerLabel.text = "Searching..."
+        footerLabel.text = nil
         search(for: searchBar.text)
         searchBar.resignFirstResponder()
     }

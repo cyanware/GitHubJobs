@@ -51,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F3B74C21FB1756B002D3ED1 /* GitHubJobs-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitHubJobs-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F89885B1F51DD9900E0BBA9 /* JobListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobListing.swift; path = DataModels/JobListing.swift; sourceTree = "<group>"; };
 		1F89886D1F51EF8400E0BBA9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = DataModels/Location.swift; sourceTree = "<group>"; };
 		1F8988751F51F01D00E0BBA9 /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobDetailViewController.swift; path = ViewControllers/JobDetailViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 			children = (
 				1F89885F1F51DDAB00E0BBA9 /* Data Models */,
 				1F8988641F51EB2800E0BBA9 /* View Controllers */,
+				1F3B74C21FB1756B002D3ED1 /* GitHubJobs-Bridging-Header.h */,
 				1F8EBF491F51B69C0068559A /* AppDelegate.swift */,
 				1F8EBF4D1F51B69C0068559A /* Main.storyboard */,
 				1F8EBF501F51B69C0068559A /* Assets.xcassets */,
@@ -281,6 +283,7 @@
 					1F8EBF451F51B69C0068559A = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = VS55D82DCJ;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					1F8EBF591F51B69C0068559A = {
@@ -655,12 +658,15 @@
 			baseConfigurationReference = 589407E6FF82B45B70AB3CF3 /* Pods-GitHubJobs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = VS55D82DCJ;
 				INFOPLIST_FILE = GitHubJobs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyanware.GitHubJobs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GitHubJobs/GitHubJobs-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -670,12 +676,14 @@
 			baseConfigurationReference = 78E25FAA72C05E16E3E505BF /* Pods-GitHubJobs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = VS55D82DCJ;
 				INFOPLIST_FILE = GitHubJobs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyanware.GitHubJobs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GitHubJobs/GitHubJobs-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
