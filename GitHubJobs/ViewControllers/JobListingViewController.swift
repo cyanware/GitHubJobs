@@ -236,7 +236,7 @@ extension JobListingViewController: UISearchBarDelegate {
     }
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        
+        // TODO: feature to be added later
     }
 
 }
@@ -246,7 +246,7 @@ extension JobListingViewController: UISearchBarDelegate {
 extension JobListingViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        
+        // Intentionally left blank
     }
 
 }
